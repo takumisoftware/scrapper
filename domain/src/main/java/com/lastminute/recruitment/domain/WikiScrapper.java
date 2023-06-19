@@ -1,8 +1,5 @@
 package com.lastminute.recruitment.domain;
 
-import com.lastminute.recruitment.domain.error.WikiPageRepository;
-import com.lastminute.recruitment.domain.error.WikiReader;
-
 public class WikiScrapper {
 
     private final WikiReader wikiReader;

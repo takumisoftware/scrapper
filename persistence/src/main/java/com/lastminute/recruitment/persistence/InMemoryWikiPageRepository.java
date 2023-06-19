@@ -1,7 +1,7 @@
 package com.lastminute.recruitment.persistence;
 
 import com.lastminute.recruitment.domain.WikiPage;
-import com.lastminute.recruitment.domain.error.WikiPageRepository;
+import com.lastminute.recruitment.domain.WikiPageRepository;
 
 import java.util.HashMap;
 import java.util.Map;

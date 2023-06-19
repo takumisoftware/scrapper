@@ -1,8 +1,8 @@
 package com.lastminute.recruitment;
 
 import com.lastminute.recruitment.domain.WikiScrapper;
-import com.lastminute.recruitment.domain.error.WikiPageRepository;
-import com.lastminute.recruitment.domain.error.WikiReader;
+import com.lastminute.recruitment.domain.WikiPageRepository;
+import com.lastminute.recruitment.domain.WikiReader;
 import com.lastminute.recruitment.persistence.InMemoryWikiPageRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
