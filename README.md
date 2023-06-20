@@ -8,10 +8,11 @@ whole wikipedia from any root page and save it to the DB.
 * You don't have to worry about page retrieval part, it's already implemented.
 
 ## Acceptance Criteria
-1. After using POST `/scrap` with root link that does exist, program should scrap all of the pages in wikipedia and save them to the database
-   1. When `html` profile is being set it should scrap wiki using html client (use `HtmlWikiClient`)
-   2. When `json` profile is being set it should scrap wiki using json client (use `JsonWikiClient`)
-2. After using POST `/scrap` with root link that doesn't exist, program should return 404
+1. After using POST `/wiki/scrap` with root link that does exist, program should scrap all of the pages in wikipedia and save them to the database
+   1. Body of the POST: `"http://wikiscrapper.test/site1"` (with `"`)
+   2. When `html` profile is being set it should scrap wiki using html client (use `HtmlWikiClient`)
+   3. When `json` profile is being set it should scrap wiki using json client (use `JsonWikiClient`)
+2. After using POST `/wiki/scrap` with root link that doesn't exist, program should return 404
 
 
 ## Implementation steps
@@ -37,7 +38,6 @@ whole wikipedia from any root page and save it to the DB.
 ## Submitting task
 
 Task implementation should be shared on some public repository (for example github)
-
 
 
         
