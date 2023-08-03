@@ -1,5 +1,7 @@
 package com.lastminute.recruitment.domain;
 
+import com.lastminute.recruitment.domain.error.WikiPageNotFound;
+
 public class WikiScrapper {
 
     private final WikiReader wikiReader;
@@ -12,7 +14,7 @@ public class WikiScrapper {
 
 
     public void read(String link) {
-
+        throw new WikiPageNotFound(link);
     }
 
 }
