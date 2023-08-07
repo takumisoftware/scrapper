@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
-import static org.mockito.Mockito.doThrow;
+import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -26,16 +26,30 @@ class WikiScrapperResourceTest {
     private MockMvc mvc;
 
     @Test
-    void scrapWikipedia() throws Exception {
+    void scrapWikiWhenPageNotFound() throws Exception {
 
-        String url = "\"http://wikiscrapper.test/invalid\"";
-        doThrow(new WikiPageNotFound(url)).when(scrapper).read(url);
-
+        String link = "\"http://wikiscrapper.test/invalid\"";
+        String normalized = "http://wikiscrapper.test/invalid";
+        doThrow(new WikiPageNotFound(link)).when(scrapper).read(normalized);
 
 
         mvc.perform(post("/wiki/scrap")
-                .content(url)
+                .content(link)
                 .contentType(MediaType.APPLICATION_JSON)
         ).andExpect(status().isNotFound());
+    }
+
+    @Test
+    void scrapWikiWhenPageExists() throws Exception {
+
+        String link = "\"http://wikiscrapper.test/site1\"";
+        String normalized = "http://wikiscrapper.test/site1";
+
+        mvc.perform(post("/wiki/scrap")
+                .content(link)
+                .contentType(MediaType.APPLICATION_JSON)
+        ).andExpect(status().isOk());
+
+        verify(scrapper, times(1)).read(normalized);
     }
 }

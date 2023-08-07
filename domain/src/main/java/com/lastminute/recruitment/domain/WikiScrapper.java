@@ -1,6 +1,7 @@
 package com.lastminute.recruitment.domain;
 
-import com.lastminute.recruitment.domain.error.WikiPageNotFound;
+import java.util.HashSet;
+import java.util.Set;
 
 public class WikiScrapper {
 
@@ -14,7 +15,18 @@ public class WikiScrapper {
 
 
     public void read(String link) {
-        throw new WikiPageNotFound(link);
+        read(link, new HashSet<>());
+    }
+
+    private void read(String link, Set<String> visited) {
+        if (!visited.contains(link)) {
+            visited.add(link);
+
+            WikiPage page = wikiReader.read(link);
+
+            repository.save(page);
+            page.getLinks().forEach(child -> read(child, visited));
+        }
     }
 
 }

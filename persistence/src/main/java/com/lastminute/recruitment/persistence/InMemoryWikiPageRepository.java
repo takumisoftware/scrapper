@@ -17,7 +17,7 @@ public class InMemoryWikiPageRepository implements WikiPageRepository {
         db.put(idCounter++, wikiPage);
         System.out.println("WikiPages in DB:");
         db.keySet().forEach(wikiPageKey ->
-                System.out.println(wikiPageKey + "->" + db.get(wikiPageKey))
+                System.out.println(wikiPageKey + "->" + db.get(wikiPageKey).getTitle())
         );
     }
 

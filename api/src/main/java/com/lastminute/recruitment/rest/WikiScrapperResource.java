@@ -32,11 +32,11 @@ public class WikiScrapperResource {
         LOGGER.info("Hello Scrap -> " + link);
 
         try {
-
-            scrapper.read(link);
+            String normalized = (link !=null) ? link.replace("\"", "") : link;
+            scrapper.read(normalized);
 
         } catch (WikiPageNotFound e) {
-            String msg = PAGE_NOT_FOUND + e.getMessage();
+            String msg = PAGE_NOT_FOUND + e.getLink();
             LOGGER.error(msg);
             throw new ResponseStatusException(NOT_FOUND, msg);
         }
