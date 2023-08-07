@@ -2,7 +2,7 @@ package com.lastminute.recruitment.domain.error;
 
 public class WikiPageNotFound extends RuntimeException{
 
-    private String link;
+    private final String link;
     public WikiPageNotFound(String link) {
         this.link = link;
     }

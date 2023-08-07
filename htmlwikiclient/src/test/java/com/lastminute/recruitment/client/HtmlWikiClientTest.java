@@ -23,9 +23,7 @@ class HtmlWikiClientTest {
         assertEquals("Site 2", page.getTitle());
         assertEquals("http://wikiscrapper.test/site2", page.getSelfLink());
         assertEquals("Content 2", page.getContent());
-        assertEquals("http://wikiscrapper.test/site4, http://wikiscrapper.test/site5", page.getLinks()
-                .stream()
-                .collect(Collectors.joining(", ")));
+        assertEquals("http://wikiscrapper.test/site4, http://wikiscrapper.test/site5", String.join(", ", page.getLinks()));
     }
 
     @Test

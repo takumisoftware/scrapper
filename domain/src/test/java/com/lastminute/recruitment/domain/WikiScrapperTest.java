@@ -28,9 +28,7 @@ class WikiScrapperTest {
         String invalidLink = "http://wikiscrapper.test/invalid";
         when(reader.read(invalidLink)).thenThrow(new WikiPageNotFound(invalidLink));
 
-        WikiPageNotFound exception = assertThrows(WikiPageNotFound.class, () -> {
-            scrapper.read(invalidLink);
-        });
+        WikiPageNotFound exception = assertThrows(WikiPageNotFound.class, () -> scrapper.read(invalidLink));
 
         assertEquals(exception.getLink(), invalidLink);
     }
